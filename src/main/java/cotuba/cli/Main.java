@@ -15,14 +15,11 @@ public class Main {
 
         try {
 
-            var opcoesCLI = new LeitorOpcoesCLI(args);
+            LeitorOpcoesCLI opcoesCLI = new LeitorOpcoesCLI(args);
 
             diretorioDosMD = opcoesCLI.getDiretorioDosMD();
-
             formato = opcoesCLI.getFormato();
-
             arquivoDeSaida = opcoesCLI.getArquivoDeSaida();
-
             modoVerboso = opcoesCLI.isModoVerboso();
 
             var cotuba = new Cotuba();

@@ -15,6 +15,7 @@ import java.util.List;
 public class Cotuba {
 
     public void executa(String formato, Path diretorioDosMD, Path arquivoDeSaida) {
+
         var renderizador = new RenderizadorMDParaHTML();
         List<Capitulo> capitulos = renderizador.renderiza(diretorioDosMD);
 
