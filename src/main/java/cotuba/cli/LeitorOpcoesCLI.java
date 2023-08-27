@@ -1,5 +1,6 @@
 package cotuba.cli;
 
+import cotuba.application.ParametrosCotuba;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -18,7 +19,7 @@ import java.util.Comparator;
 /**
  * @author Washington Antunes for wTI on 12/08/2023
  */
-class LeitorOpcoesCLI {
+class LeitorOpcoesCLI implements ParametrosCotuba {
 
     private Path diretorioDosMD;
     private String formato;
