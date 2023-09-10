@@ -1,6 +1,5 @@
 package cotuba.md;
 
-import cotuba.application.RenderizadorMDParaHTML;
 import cotuba.domain.Capitulo;
 import org.commonmark.node.AbstractVisitor;
 import org.commonmark.node.Heading;
@@ -8,7 +7,6 @@ import org.commonmark.node.Node;
 import org.commonmark.node.Text;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -21,10 +19,8 @@ import java.util.stream.Stream;
 /**
  * @author Washington Antunes for wTI on 12/08/2023
  */
-@Component
-public class RenderizadorMDParaHTMLComCommonMark implements RenderizadorMDParaHTML {
+public class RenderizadorMDParaHTML {
 
-    @Override
     public List<Capitulo> renderiza(Path diretorioDosMD) {
         return obtemArquivosMD(diretorioDosMD).stream()
                 .map(arquivoMD -> {

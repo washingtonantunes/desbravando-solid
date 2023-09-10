@@ -1,6 +1,7 @@
 package cotuba.cli;
 
 import cotuba.application.ParametrosCotuba;
+import cotuba.domain.FormatoEbook;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -22,19 +23,19 @@ import java.util.Comparator;
 class LeitorOpcoesCLI implements ParametrosCotuba {
 
     private Path diretorioDosMD;
-    private String formato;
+    private FormatoEbook formato;
     private Path arquivoDeSaida;
     private boolean modoVerboso = false;
 
     public LeitorOpcoesCLI(String[] args) {
 
-            var options = criaOpcoes();
-            CommandLine cmd = parseDosArgumentos(args, options);
+        var options = criaOpcoes();
+        CommandLine cmd = parseDosArgumentos(args, options);
 
-            trataDiretoriosDosMD(cmd);
-            trataFormato(cmd);
-            trataArquivoDeSaida(cmd);
-            trataModoVerboso(cmd);
+        trataDiretoriosDosMD(cmd);
+        trataFormato(cmd);
+        trataArquivoDeSaida(cmd);
+        trataModoVerboso(cmd);
     }
 
     private Options criaOpcoes() {
@@ -91,9 +92,9 @@ class LeitorOpcoesCLI implements ParametrosCotuba {
         String nomeDoFormatoDoEbook = cmd.getOptionValue("format");
 
         if (nomeDoFormatoDoEbook != null) {
-            formato = nomeDoFormatoDoEbook.toLowerCase();
+            formato = FormatoEbook.valueOf(nomeDoFormatoDoEbook.toUpperCase());
         } else {
-            formato = "pdf";
+            formato = FormatoEbook.PDF;
         }
     }
 
@@ -103,7 +104,7 @@ class LeitorOpcoesCLI implements ParametrosCotuba {
             if (nomeDoArquivoDeSaidaDoEbook != null) {
                 arquivoDeSaida = Paths.get(nomeDoArquivoDeSaidaDoEbook);
             } else {
-                arquivoDeSaida = Paths.get("book." + formato.toLowerCase());
+                arquivoDeSaida = Paths.get("book." + formato.name().toLowerCase());
             }
             if (Files.isDirectory(arquivoDeSaida)) {
                 // deleta arquivos do diretório recursivamente
@@ -125,7 +126,7 @@ class LeitorOpcoesCLI implements ParametrosCotuba {
         return diretorioDosMD;
     }
 
-    public String getFormato() {
+    public FormatoEbook getFormato() {
         return formato;
     }
 

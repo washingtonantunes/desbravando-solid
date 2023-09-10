@@ -8,10 +8,9 @@ import com.itextpdf.layout.element.AreaBreak;
 import com.itextpdf.layout.element.IBlockElement;
 import com.itextpdf.layout.element.IElement;
 import com.itextpdf.layout.property.AreaBreakType;
-import cotuba.application.GeradorPDF;
+import cotuba.application.GeradorEbook;
 import cotuba.domain.Capitulo;
 import cotuba.domain.Ebook;
-import org.springframework.stereotype.Component;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,8 +19,7 @@ import java.util.List;
 /**
  * @author Washington Antunes for wTI on 12/08/2023
  */
-@Component
-public class GeradorPDFComIText implements GeradorPDF {
+public class GeradorPDF implements GeradorEbook {
 
     @Override
     public void gera(Ebook ebook) {
@@ -39,7 +37,7 @@ public class GeradorPDFComIText implements GeradorPDF {
                 for (IElement element : convertToElements) {
                     pdfDocument.add((IBlockElement) element);
                 }
-                if(!ebook.isUltimoCapitulo(capitulo)) {
+                if (!ebook.isUltimoCapitulo(capitulo)) {
                     pdfDocument.add(new AreaBreak(AreaBreakType.NEXT_PAGE));
                 }
             }
