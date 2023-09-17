@@ -1,4 +1,4 @@
-package cotuba.puglin;
+package cotuba.plugin;
 
 import cotuba.domain.Capitulo;
 import cotuba.domain.Ebook;
@@ -25,8 +25,6 @@ public interface Plugin {
 
     static void gerou(Ebook ebook) {
         ServiceLoader.load(Plugin.class)
-                .forEach(plugin ->  {
-                    plugin.aposGeracao(ebook);
-                });
+                .forEach(plugin -> plugin.aposGeracao(ebook));
     }
 }

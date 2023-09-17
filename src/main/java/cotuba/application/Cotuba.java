@@ -4,7 +4,7 @@ import cotuba.domain.Capitulo;
 import cotuba.domain.Ebook;
 import cotuba.domain.FormatoEbook;
 import cotuba.md.RenderizadorMDParaHTML;
-import cotuba.puglin.Plugin;
+import cotuba.plugin.Plugin;
 
 import java.nio.file.Path;
 import java.util.List;
