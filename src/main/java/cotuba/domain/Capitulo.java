@@ -1,9 +1,11 @@
 package cotuba.domain;
 
+import cotuba.plugin.CapituloSoParaLeitura;
+
 /**
  * @author Washington Antunes for wTI on 12/08/2023
  */
-public class Capitulo {
+public class Capitulo implements CapituloSoParaLeitura {
 
     private String titulo;
 

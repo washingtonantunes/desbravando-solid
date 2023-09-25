@@ -1,12 +1,14 @@
 package cotuba.domain;
 
+import cotuba.plugin.EbookSoParaLeitura;
+
 import java.nio.file.Path;
 import java.util.List;
 
 /**
  * @author Washington Antunes for wTI on 12/08/2023
  */
-public class Ebook {
+public class Ebook implements EbookSoParaLeitura {
 
     private FormatoEbook formato;
 

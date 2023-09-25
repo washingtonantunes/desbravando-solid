@@ -1,30 +1,22 @@
 package cotuba.plugin;
 
 import cotuba.domain.Capitulo;
-import cotuba.domain.Ebook;
 
 import java.util.ServiceLoader;
 
 /**
- * @author Washington Antunes for wTI on 10/09/2023
+ * @author Washington Antunes for wTI on 25/09/2023
  */
-public interface Plugin {
+public interface AoRenderizarHTML {
 
     String aposRenderizacao(String html);
 
-    void aposGeracao(Ebook ebook);
-
     static void renderizou(Capitulo capitulo) {
-        ServiceLoader.load(Plugin.class)
+        ServiceLoader.load(AoRenderizarHTML.class)
                 .forEach(plugin -> {
                     String html = capitulo.getConteudoHTML();
                     String htmlModificado = plugin.aposRenderizacao(html);
                     capitulo.setConteudoHTML(htmlModificado);
                 });
-    }
-
-    static void gerou(Ebook ebook) {
-        ServiceLoader.load(Plugin.class)
-                .forEach(plugin -> plugin.aposGeracao(ebook));
     }
 }
